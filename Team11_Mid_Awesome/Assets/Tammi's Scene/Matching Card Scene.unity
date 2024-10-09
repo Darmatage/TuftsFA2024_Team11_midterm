@@ -509,14 +509,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b0a9b811422fd94dadeb0a03f701d25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardSlots: []
+  cardSlots:
+  - {fileID: 1962070744}
+  - {fileID: 1387833338}
+  - {fileID: 1309993812}
+  - {fileID: 711219837}
+  - {fileID: 648598098}
+  - {fileID: 1490591006}
   cards:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 467536178}
+  - {fileID: 1763627677}
+  - {fileID: 654108532}
+  - {fileID: 1243988284}
+  - {fileID: 1904645829}
+  - {fileID: 812196348}
 --- !u!4 &601810545
 Transform:
   m_ObjectHideFlags: 0

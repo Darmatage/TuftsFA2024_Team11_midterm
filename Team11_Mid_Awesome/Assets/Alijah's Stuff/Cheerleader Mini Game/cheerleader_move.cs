@@ -40,9 +40,6 @@ public class cheerleader_move : MonoBehaviour
 
         //moves the position
         Vector2 movement = new Vector2(direction, 0f);
-
-        Debug.Log(rb.position + " : " + screenPosition + " -> " + Input.GetAxisRaw("Horizontal"));
-
         rb.MovePosition(rb.position + movement * moveSpeed * fixedTime());
         
         

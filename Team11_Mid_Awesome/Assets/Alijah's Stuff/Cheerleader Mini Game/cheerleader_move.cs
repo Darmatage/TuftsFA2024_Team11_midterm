@@ -14,7 +14,7 @@ public class cheerleader_move : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        moveSpeed = 10f;
+        moveSpeed = 8f;
         difficulty = 1f;
     }
 

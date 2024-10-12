@@ -7,13 +7,19 @@ public class Score : MonoBehaviour {
      public GameObject textGameObject;
      private int score;
      public int scoreWin = 5;
-     public bool isEnd = true;   // allows specific settings for end scenes
+     public bool isEnd = true; 
+     private GameController gameController;  // allows specific settings for end scenes
 
      void Start () {
-          score =0;
-          UpdateScore ();
+        GameObject controllerObject = GameObject.FindWithTag("GameController");
+        if (controllerObject != null) {
+            gameController = controllerObject.GetComponent<GameController>();
+        }
+        score =0;
+        UpdateScore();
+          
 
-          if (isEnd){
+        if (isEnd){
                Cursor.lockState = CursorLockMode.None;
                Cursor.visible = true;
           }

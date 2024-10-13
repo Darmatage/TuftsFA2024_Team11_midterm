@@ -14,7 +14,7 @@ public class CheerleaderGameVariables : MonoBehaviour
     void Start()
     {   
         Progress = 0f;
-        Difficulty = 0.0f;
+        Difficulty = 0.5f;
 
         debugDifficulty = Difficulty;
     }

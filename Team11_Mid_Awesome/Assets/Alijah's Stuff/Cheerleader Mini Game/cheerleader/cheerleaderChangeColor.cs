@@ -15,10 +15,8 @@ public class cheerleaderChangeColor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Use Time.time for continuous updates
-        float progressValue = Mathf.Sin(Time.time * 0.2f); // Adjust the multiplier as needed
+        float progressValue = CheerleaderGameVariables.Progress;
         material.SetFloat("_progress", progressValue);
-        
-        Debug.Log("progress bar: " + material.GetFloat("_progress"));
     }
+
 }

@@ -23,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Tammi's Scene/Matching Card Scene.unity
     guid: b9a43a0e61d14424a91ce35ddecff5f2
+  - enabled: 1
+    path: Assets/yssies stuff/nerds_talk.unity
+    guid: bb40374c2e2fc472a83d7d8018e4e38d
+  - enabled: 1
+    path: Assets/yssies stuff/nerds.unity
+    guid: 9c87c5e6e490d42eaab2bf823a3cd205
   m_configObjects: {}

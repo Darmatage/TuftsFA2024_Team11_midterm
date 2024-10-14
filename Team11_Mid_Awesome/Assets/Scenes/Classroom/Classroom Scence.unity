@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43667555, g: 0.48427176, b: 0.5645241, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366756, g: 0.48427135, b: 0.56452316, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -322,6 +322,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 92890752667705234, guid: a90afa194503f194b8f3782c96e0e0f1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 47be09b69dad28f49b90ac20f7bfc087, type: 2}
     - target: {fileID: 3082556918431248300, guid: a90afa194503f194b8f3782c96e0e0f1, type: 3}
       propertyPath: m_Size.x
       value: 150.33215
@@ -346,10 +350,22 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 4.678478
       objectReference: {fileID: 0}
+    - target: {fileID: 4256214256423641551, guid: a90afa194503f194b8f3782c96e0e0f1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 47be09b69dad28f49b90ac20f7bfc087, type: 2}
     - target: {fileID: 5544292536459493274, guid: a90afa194503f194b8f3782c96e0e0f1, type: 3}
       propertyPath: m_Name
       value: DeskGroup
       objectReference: {fileID: 0}
+    - target: {fileID: 6244773092280092072, guid: a90afa194503f194b8f3782c96e0e0f1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 47be09b69dad28f49b90ac20f7bfc087, type: 2}
+    - target: {fileID: 6309613068560845365, guid: a90afa194503f194b8f3782c96e0e0f1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 47be09b69dad28f49b90ac20f7bfc087, type: 2}
     - target: {fileID: 7079263510514189397, guid: a90afa194503f194b8f3782c96e0e0f1, type: 3}
       propertyPath: m_RootOrder
       value: 8

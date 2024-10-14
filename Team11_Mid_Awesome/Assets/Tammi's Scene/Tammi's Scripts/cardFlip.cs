@@ -1,15 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;  // Required for handling UI elements
 
 public class CardFlip : MonoBehaviour
 {
-    public float flipSpeed = 5f; 
-    private bool isFlipping = false; 
+    public float flipSpeed = 5f;
+    private bool isFlipping = false;
     private bool isFaceUp = false;
+    public string cardID;  // Unique identifier for each card (set this in the Inspector)
 
     private Quaternion targetRotation;
+
+    // Static list to keep track of flipped cards (shared across all instances)
+    private static List<CardFlip> flippedCards = new List<CardFlip>();
+
+    // Static counter to track matched cards
+    private static int matchedPairs = 0;
+
+    // Reference to the "Puzzle Completed" text
+    public Text puzzleCompletedText;
+
+    // Total number of card pairs (set this in the Inspector or initialize it)
+    public int totalPairs = 3;
 
     private void Start()
     {
@@ -17,42 +30,107 @@ public class CardFlip : MonoBehaviour
     }
 
     private void Update()
-{
-    if (Input.GetMouseButtonDown(0))
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
+        if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Raycast hit: " + hit.transform.name);  // Logs the object the ray hits
-        }
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit) && hit.transform.IsChildOf(transform) && !isFlipping)
-        {
-            Debug.Log("Card clicked, starting flip!");
-            StartCoroutine(FlipCard());
+            if (Physics.Raycast(ray, out hit))
+            {
+                Debug.Log("Raycast hit: " + hit.transform.name);  // Logs the object the ray hits
+            }
+
+            // Check if the player is clicking on this card and it's not already flipping
+            if (Physics.Raycast(ray, out hit) && hit.transform.IsChildOf(transform) && !isFlipping)
+            {
+                // Only allow flipping if less than 2 cards are currently flipped
+                if (flippedCards.Count < 2)
+                {
+                    Debug.Log("Card clicked, starting flip!");
+                    StartCoroutine(FlipCard());
+                }
+            }
         }
     }
-}
+
     private IEnumerator FlipCard()
-{
-    Debug.Log("FlipCard coroutine started!");  
-    isFlipping = true;
-    float flipProgress = 0f;
-    float totalFlipAngle = 180f;
-
-    Quaternion startRotation = transform.rotation;
-    Quaternion endRotation = startRotation * Quaternion.Euler(0f, totalFlipAngle, 0f);
-
-    while (flipProgress < 1f)
     {
-        flipProgress += Time.deltaTime * flipSpeed;
-        transform.rotation = Quaternion.Lerp(startRotation, endRotation, flipProgress);
-        yield return null;
+        isFlipping = true;
+
+        // Flip to face-up position
+        yield return StartCoroutine(FlipToState(true));
+
+        // Add this card to the list of flipped cards
+        flippedCards.Add(this);
+
+        // Check if two cards are flipped
+        if (flippedCards.Count == 2)
+        {
+            // Wait for 1 second to show the cards before checking if they match
+            yield return new WaitForSeconds(1f);
+
+            // Check if the two cards match
+            if (flippedCards[0].cardID == flippedCards[1].cardID)
+            {
+                Debug.Log("Cards match! Keeping them flipped.");
+
+                // Clear the flipped cards list without flipping them back
+                flippedCards.Clear();
+
+                // Increment the matched pairs counter
+                matchedPairs++;
+
+                // Check if all pairs are matched
+                if (matchedPairs == totalPairs)
+                {
+                    Debug.Log("Puzzle Completed!");
+                    ShowPuzzleCompletedText();
+                }
+            }
+            else
+            {
+                Debug.Log("Cards do not match! Flipping them back.");
+
+                // Flip both cards back after showing them
+                yield return StartCoroutine(flippedCards[0].FlipToState(false));
+                yield return StartCoroutine(flippedCards[1].FlipToState(false));
+
+                // Clear the flipped cards list
+                flippedCards.Clear();
+            }
+        }
+
+        isFlipping = false;
     }
 
-    isFaceUp = !isFaceUp;
-    isFlipping = false;
-}
+    private IEnumerator FlipToState(bool flipToFaceUp)
+    {
+        float flipProgress = 0f;
+        float totalFlipAngle = flipToFaceUp ? 180f : -180f;  // 180° for face-up, -180° to go back to face-down
+
+        Quaternion startRotation = transform.rotation;
+        Quaternion endRotation = startRotation * Quaternion.Euler(0f, totalFlipAngle, 0f);
+
+        // Smoothly rotate the card to the target rotation
+        while (flipProgress < 1f)
+        {
+            flipProgress += Time.deltaTime * flipSpeed;
+            transform.rotation = Quaternion.Lerp(startRotation, endRotation, flipProgress);
+            yield return null;
+        }
+
+        isFaceUp = flipToFaceUp;
+    }
+
+    private void ShowPuzzleCompletedText()
+    {
+        if (puzzleCompletedText != null)
+        {
+            // Enable or display the "Puzzle Completed" text
+            puzzleCompletedText.enabled = true;  // If you're using regular UI Text
+            // If you're using TextMeshPro, you'd use:
+            // puzzleCompletedText.gameObject.SetActive(true);
+        }
+    }
 }

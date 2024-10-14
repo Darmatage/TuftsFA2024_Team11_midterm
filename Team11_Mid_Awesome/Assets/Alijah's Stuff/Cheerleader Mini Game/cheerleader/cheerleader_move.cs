@@ -23,7 +23,7 @@ public class cheerleader_move : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         difficulty = CheerleaderGameVariables.Difficulty;
         moveSpeed = DifficultyLerp(8f, 16f);
-        particleHitAmount = 0.005f;
+        particleHitAmount = 0.002f;
     }
 
     // Update is called once per frame

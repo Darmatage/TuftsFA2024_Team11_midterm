@@ -62,7 +62,7 @@ public class ParticleCollision : MonoBehaviour
             Random.Range(-offsetRange.z, offsetRange.z)
         );
         position += randomOffset;
-        position.y -= 0.7f;
+        position.y -= 0.55f;
 
         // Instantiate the decal
         GameObject newDecal = Instantiate(bloodDecal, position, Quaternion.identity);

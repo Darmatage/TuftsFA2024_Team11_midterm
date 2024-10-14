@@ -9,6 +9,8 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] private int _mazeWidth;
     [SerializeField] private int _mazeDepth;
     [SerializeField] private GameObject _playerPrefab; // Reference to player prefab
+    [SerializeField] private GameObject _exitTriggerPrefab; // Reference to exit trigger prefab
+
 
     private MazeCell[,] _mazeGrid;
     private List<MazeCell> outerWalls = new List<MazeCell>();
@@ -57,8 +59,19 @@ public class MazeGenerator : MonoBehaviour
         // Clear walls for entrance and exit
         ClearWallForEntrance(_entranceCell);
         ClearWallForExit(_exitCell);
+
+        // Place the exit trigger
+        PlaceExitTrigger();
     }
 
+    private void PlaceExitTrigger()
+    {
+        if (_exitTriggerPrefab != null && _exitCell != null)
+        {
+            Vector3 triggerPosition = _exitCell.transform.position;
+            Instantiate(_exitTriggerPrefab, triggerPosition, Quaternion.identity);
+        }
+    }
     private MazeCell SelectRandomOuterWall()
     {
         int index = Random.Range(0, outerWalls.Count);

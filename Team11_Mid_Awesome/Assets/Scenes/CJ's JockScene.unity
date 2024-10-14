@@ -140,7 +140,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!64 &852624250
 MeshCollider:
@@ -532,3 +532,4 @@ MonoBehaviour:
   _mazeWidth: 10
   _mazeDepth: 10
   _playerPrefab: {fileID: 4208749028099362941, guid: 1c6abfee648fd47faa72f75a60bb6977, type: 3}
+  _exitTriggerPrefab: {fileID: 7161229874049492170, guid: 9ee61fad1b90b4f66a77fdba957e0279, type: 3}

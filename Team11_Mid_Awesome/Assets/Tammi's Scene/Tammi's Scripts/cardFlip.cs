@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;  // Required for handling UI elements
+using TMPro;  // Import the TextMeshPro namespace
 
 public class CardFlip : MonoBehaviour
 {
@@ -18,8 +18,8 @@ public class CardFlip : MonoBehaviour
     // Static counter to track matched cards
     private static int matchedPairs = 0;
 
-    // Reference to the "Puzzle Completed" text
-    public Text puzzleCompletedText;
+    // Reference to the "Puzzle Completed" text (now using TextMeshPro)
+    public TextMeshProUGUI puzzleCompletedText;
 
     // Total number of card pairs (set this in the Inspector or initialize it)
     public int totalPairs = 3;
@@ -128,9 +128,7 @@ public class CardFlip : MonoBehaviour
         if (puzzleCompletedText != null)
         {
             // Enable or display the "Puzzle Completed" text
-            puzzleCompletedText.enabled = true;  // If you're using regular UI Text
-            // If you're using TextMeshPro, you'd use:
-            // puzzleCompletedText.gameObject.SetActive(true);
+            puzzleCompletedText.gameObject.SetActive(true);  // This makes the text visible
         }
     }
 }

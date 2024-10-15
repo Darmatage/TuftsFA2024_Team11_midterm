@@ -51,7 +51,7 @@ public class QuizManager : MonoBehaviour
         if (score >= scoreWin){
             SceneManager.LoadScene("ClassroomBook");
         } else {
-            QuitGame();
+            SceneManager.LoadScene("nerds_talk");
         }
     }
     public void QuitGame() {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CheerleaderGameVariables : MonoBehaviour
 {
@@ -24,4 +25,9 @@ public class CheerleaderGameVariables : MonoBehaviour
     {
         Difficulty = debugDifficulty;
     }
+
+    void FixedUpdate(){
+        if(Progress >= 1) SceneManager.LoadScene("ClassroomBook");
+    }
+    
 }

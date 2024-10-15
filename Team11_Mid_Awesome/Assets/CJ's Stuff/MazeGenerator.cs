@@ -9,6 +9,8 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] private int _mazeWidth;
     [SerializeField] private int _mazeDepth;
     [SerializeField] private GameObject _playerPrefab; // Reference to player prefab
+    [SerializeField] private GameObject _exitTriggerPrefab; // Reference to exit trigger prefab
+
 
     private MazeCell[,] _mazeGrid;
     private List<MazeCell> outerWalls = new List<MazeCell>();
@@ -57,6 +59,51 @@ public class MazeGenerator : MonoBehaviour
         // Clear walls for entrance and exit
         ClearWallForEntrance(_entranceCell);
         ClearWallForExit(_exitCell);
+
+        // Place the exit trigger
+        PlaceExitTrigger();
+    }
+
+    private void PlaceExitTrigger()
+    {
+        if (_exitTriggerPrefab != null && _exitCell != null)
+        {
+            // Position the trigger at the exit cell's location
+            Vector3 triggerPosition = _exitCell.transform.position;
+            GameObject exitTrigger = Instantiate(_exitTriggerPrefab, triggerPosition, Quaternion.identity);
+
+            // Adjust the trigger orientation based on its wall
+            AlignTriggerToWall(exitTrigger, _exitCell);
+        }
+    }
+
+    private void AlignTriggerToWall(GameObject trigger, MazeCell cell)
+    {
+        // Adjust the trigger's rotation and position based on which wall is open
+        if (cell.transform.position.x == 0)
+        {
+            // Align to the left wall
+            trigger.transform.position += Vector3.left * 0.5f; // Offset to the left
+            trigger.transform.rotation = Quaternion.Euler(0, 90, 0); // Rotate to face the player
+        }
+        else if (cell.transform.position.x == _mazeWidth - 1)
+        {
+            // Align to the right wall
+            trigger.transform.position += Vector3.right * 0.5f;
+            trigger.transform.rotation = Quaternion.Euler(0, -90, 0);
+        }
+        else if (cell.transform.position.z == 0)
+        {
+            // Align to the back wall
+            trigger.transform.position += Vector3.back * 0.5f;
+            trigger.transform.rotation = Quaternion.Euler(0, 0, 0); // No rotation needed
+        }
+        else if (cell.transform.position.z == _mazeDepth - 1)
+        {
+            // Align to the front wall
+            trigger.transform.position += Vector3.forward * 0.5f;
+            trigger.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
     }
 
     private MazeCell SelectRandomOuterWall()

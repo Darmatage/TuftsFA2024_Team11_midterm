@@ -13,36 +13,30 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        // Cache the Rigidbody component
         _rigidbody = GetComponent<Rigidbody>();
-        // Ensure Rigidbody settings are optimal for player control
-        _rigidbody.freezeRotation = true; // Prevents Rigidbody from rotating on its own due to collisions
+        _rigidbody.freezeRotation = true;
     }
 
     void Update()
     {
-        // Get movement input from WASD/Arrow keys
-        float moveX = Input.GetAxis("Horizontal");
-        float moveZ = Input.GetAxis("Vertical");
+        // Flip movement inputs
+        float moveX = -Input.GetAxis("Horizontal"); // Corrected inversion
+        float moveZ = -Input.GetAxis("Vertical");   // Corrected inversion
         _movementInput = new Vector3(moveX, 0, moveZ).normalized;
 
-        // Get mouse rotation input
         float mouseX = Input.GetAxis("Mouse X");
         _rotationInput = new Vector3(0, mouseX, 0);
     }
 
     void FixedUpdate()
     {
-        // Handle movement
         MovePlayer();
-
-        // Handle rotation
         RotatePlayer();
     }
 
     private void MovePlayer()
     {
-        Vector3 moveDirection = transform.TransformDirection(_movementInput) * moveSpeed;
+        Vector3 moveDirection = _movementInput * moveSpeed;
         Vector3 newPosition = _rigidbody.position + moveDirection * Time.fixedDeltaTime;
         _rigidbody.MovePosition(newPosition);
     }

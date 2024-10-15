@@ -12,7 +12,7 @@ public class CardShuffler : MonoBehaviour
 
     private void Start()
     {
-        ShuffleCards();
+        ShuffleCards();  // Shuffle cards as soon as the game starts
     }
 
     public void ShuffleCards()
@@ -39,6 +39,6 @@ public class CardShuffler : MonoBehaviour
             availableSlots.RemoveAt(randomIndex);
         }
 
-        Debug.Log("Cards shuffled!");
+        Debug.Log("Cards shuffled at the start!");
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;  // Import the TextMeshPro namespace
+using UnityEngine.SceneManagement;  // Required for scene management
 
 public class CardFlip : MonoBehaviour
 {
@@ -18,8 +18,8 @@ public class CardFlip : MonoBehaviour
     // Static counter to track matched cards
     private static int matchedPairs = 0;
 
-    // Reference to the "Puzzle Completed" text (now using TextMeshPro)
-    public TextMeshProUGUI puzzleCompletedText;
+    // Reference to the "Puzzle Completed" text
+    public TMPro.TextMeshProUGUI puzzleCompletedText;  // TextMeshPro version for UI text
 
     // Total number of card pairs (set this in the Inspector or initialize it)
     public int totalPairs = 3;
@@ -86,6 +86,9 @@ public class CardFlip : MonoBehaviour
                 {
                     Debug.Log("Puzzle Completed!");
                     ShowPuzzleCompletedText();
+                    // Load the main scene after a short delay
+                    yield return new WaitForSeconds(2f);
+                    SceneManager.LoadScene("ClassroomBook");  // Replace "MainScene" with the actual scene name
                 }
             }
             else

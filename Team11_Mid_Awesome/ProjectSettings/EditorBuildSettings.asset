@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/devil_start.unity
+    guid: 3874ac16a55144096976569e3ae14abf
+  - enabled: 1
     path: Assets/Scenes/yssies_scene.unity
     guid: 4a31cef1fdcf34459883722580f2146b
   - enabled: 1

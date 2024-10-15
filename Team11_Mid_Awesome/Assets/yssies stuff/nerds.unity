@@ -786,6 +786,57 @@ MonoBehaviour:
     - 200
     - 220
     correctAnswerIndex: 3
+  - questions: Joshy betrayed you by stealing your pendulum. If you removed 1/3 of
+      his 60 bones, how many bones would he have left?
+    answers:
+    - 20
+    - 30
+    - 32
+    - 8
+    correctAnswerIndex: 1
+  - questions: You caught your classmate and removed 3 out of his 4 limbs. How many
+      limbs does Evan still have left to crawl away with?
+    answers:
+    - 3
+    - 0
+    - 1
+    - 2
+    correctAnswerIndex: 3
+  - questions: A demon cursed you, stealing 36 years from your life. You manage to
+      reverse 2/3 of the curse. How many years are still missing from your soul?
+    answers:
+    - 24
+    - 26
+    - 23
+    - 40
+    correctAnswerIndex: 1
+  - questions: There are 72 cursed shadows lurking in the abandoned mansion. You
+      destroy 5/6 of them with a sacred spell. How many cursed shadows remain to
+      haunt the halls?
+    answers:
+    - 58
+    - 70
+    - 62
+    - 60
+    correctAnswerIndex: 4
+  - questions: William came at you, his mouth full of sharp, broken teeth. You bashed
+      out 1/4 of his 32 teeth with your fist. How many teeth are still left clattering
+      in his skull?
+    answers:
+    - 7
+    - 10
+    - 8
+    - 12
+    correctAnswerIndex: 3
+  - questions: Anthony collected 81 cursed skulls, trophies of his victims. You smashed
+      2/9 of them into dust. How many skulls does Joshy still have to clutch in his
+      bony fingers?
+    answers:
+    - 17
+    - 20
+    - 18
+    - 11
+    correctAnswerIndex: 3
   options:
   - {fileID: 237978761}
   - {fileID: 1787691385}

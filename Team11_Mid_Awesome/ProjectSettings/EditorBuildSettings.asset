@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Classroom/ClassroomBook.unity
     guid: 45d822d870125f740a157ab225557c01
+  - enabled: 1
+    path: Assets/Scenes/back up file.unity
+    guid: a4931d38b1b864c4b90c36cbac6e9e72
   m_configObjects: {}

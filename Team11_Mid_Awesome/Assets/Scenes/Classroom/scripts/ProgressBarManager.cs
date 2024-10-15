@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class ProgressBarManager : MonoBehaviour
 {
     public static ProgressBarManager instance;
-    public float progressAmount;
+    public static float progressAmount;
     public GameObject progressBar;
 
     private void Awake()
@@ -23,15 +23,18 @@ public class ProgressBarManager : MonoBehaviour
 
     public void Update(){
         //progressbar.SetActive(SceneManager.GetActiveScene().name == "ClassroomBook");
-        progressBar.GetComponent<Renderer>().material.SetFloat("_progress", progressAmount);
+        //progressBar.GetComponent<Renderer>().material.SetFloat("_progress", progressAmount);
     }
 
-    public void UpdateProgress(float progress)
+    private static void Init()
     {
-        if (progressBar != null)
-        {
-            progressAmount += progress;
-        }
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("OnSceneLoaded: " + scene.name);
+        Debug.Log(mode);
     }
 }
 

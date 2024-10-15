@@ -8,7 +8,7 @@ public class ExitTriggerScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // Load the Classroom scene when the player reaches the exit
-            SceneManager.LoadScene("Classroom Scence");
+            SceneManager.LoadScene("yssies_scene");
         }
     }
 }

@@ -33,4 +33,6 @@ public class GameHandler : MonoBehaviour
             ProgressBarManager.progressAmount += (1f / instance.numberOfGames);
         }
     }
+
+
 }

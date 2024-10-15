@@ -7,7 +7,7 @@ public class ParticleCollision : MonoBehaviour
     private List<ParticleCollisionEvent> collisionEvents;
 
     public GameObject bloodDecal;
-    public float spawnCooldown = 0.05f; // Time in seconds between spawns
+    public float spawnCooldown = 0.01f; // Time in seconds between spawns
     public int maxDecals = 50; // Maximum number of decals
     public Vector3 offsetRange = new Vector3(0.025f, 0.025f, 0f); // Range for random offsets
     public Vector2 scaleRange = new Vector2(0.75f,1.5f); // Range for random scale multipliers

@@ -37,8 +37,8 @@ public class Pausemenu : MonoBehaviour
     }
 
     public void GoToMainMenu(){
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("yssies_scene");
+        ResumeGame();
+        SceneManager.LoadScene("ClassroomBook");
     }
 
     public void QuitGame(){

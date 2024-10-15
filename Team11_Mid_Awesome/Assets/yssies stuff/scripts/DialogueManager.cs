@@ -10,12 +10,14 @@ public class DialogueManager : MonoBehaviour
 	public Text dialogueText;
 
 	public Animator animators;
+    public Button nextSceneButton;
 
 	private Queue<string> sentences;
 
 	// Use this for initialization
 	void Start () {
 		sentences = new Queue<string>();
+        nextSceneButton.gameObject.SetActive(false); // Hide button at start
 	}
 
 	public void StartDialogue (Dialogue dialogue)
@@ -60,6 +62,8 @@ public class DialogueManager : MonoBehaviour
 	void EndDialogue()
 	{
         animators.SetBool("isOpen", false);
+        nextSceneButton.gameObject.SetActive(true);
 	}
+
 
 }

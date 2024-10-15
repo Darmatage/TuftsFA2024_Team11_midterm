@@ -10,6 +10,8 @@ public class QuizManager : MonoBehaviour
     public GameObject[] options;
     public int currentQuestionIndex;
     public Text questionText; // Legacy Text component
+     private int score;
+     public int scoreWin = 5;
     
     // Start is called before the first frame update
     private void Start()
@@ -19,9 +21,9 @@ public class QuizManager : MonoBehaviour
 
     public void correct(){
         QnA.RemoveAt(currentQuestionIndex);
-        if (QnA.Count == 0 || currentQuestionIndex == 4) // When all questions are done or index reaches 4
+        if (QnA.Count == 0 || currentQuestionIndex == 6) // When all questions are done or index reaches 4
         {
-            SceneManager.LoadScene("ClassroomBook"); // Switch to your scene
+            WinorLose();
         }
         else
         {
@@ -45,7 +47,20 @@ public class QuizManager : MonoBehaviour
             }
         }
     }
-
+    public void WinorLose(){
+        if (score >= scoreWin){
+            SceneManager.LoadScene("ClassroomBook");
+        } else {
+            QuitGame();
+        }
+    }
+    public void QuitGame() {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
+    }
     // Update is called once per frame
     void Update()
     {

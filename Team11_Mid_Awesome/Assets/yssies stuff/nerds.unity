@@ -757,6 +757,16 @@ MonoBehaviour:
     - 20
     - 15
     correctAnswerIndex: 2
+  - questions: Your crush rejected your promposal and now you want to curse their
+      entire bloodline. If it takes 10 minutes to prepare,  5 minutes to say the
+      curse and they have 4 different bloodlines, how many minutes will the cursing
+      take you?
+    answers:
+    - 60
+    - 80
+    - 90
+    - 69
+    correctAnswerIndex: 1
   - questions: You know it takes 6 minutes to build a bomb , and you need 21 total
       bombs for your teachers house, car and school. How many minutes will it take
       you to build all of the bombs?
@@ -766,6 +776,16 @@ MonoBehaviour:
     - 126
     - 3.5
     correctAnswerIndex: 3
+  - questions: 'You caught your classmate cheating off of you, and got you stuck
+      in detention. If you have 5 embarassing photos of them, and you want to print
+      40 copies each to throw around the school, how many photos will you have in
+      total? '
+    answers:
+    - 250
+    - 190
+    - 200
+    - 220
+    correctAnswerIndex: 3
   options:
   - {fileID: 237978761}
   - {fileID: 1787691385}
@@ -773,6 +793,7 @@ MonoBehaviour:
   - {fileID: 1499558838}
   currentQuestionIndex: 0
   questionText: {fileID: 84310519}
+  scoreWin: 5
 --- !u!4 &365615911
 Transform:
   m_ObjectHideFlags: 0

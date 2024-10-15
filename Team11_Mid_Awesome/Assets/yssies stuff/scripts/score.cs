@@ -30,16 +30,16 @@ public class Score : MonoBehaviour {
           }
     }
 
-    public void AddScore (int newScoreValue) {
-          score += newScoreValue;
-          UpdateScore ();
-          WinorLose();
-     }
-    public void WinorLose(){
-        if (score >= scoreWin){
-            SceneManager.LoadScene("ClassroomBook");
-        } else {
-            QuitGame();
+    public void AddScore(int newScoreValue) {
+        score += newScoreValue;
+        UpdateScore();
+        CheckWinCondition(score);
+    }
+    void CheckWinCondition(int currscore) // New method to check if score reaches win condition
+    {
+        if (currscore >= 5) // Check if score meets or exceeds win condition
+        {
+            SceneManager.LoadScene("ClassroomBook"); // Load win scene
         }
     }
     void UpdateScore () {

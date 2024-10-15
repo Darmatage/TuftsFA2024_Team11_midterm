@@ -16,16 +16,18 @@ public class answerScript : MonoBehaviour
         }
     }    
     public void Answer(){
-       if (isCorrect) {
+        if (isCorrect)
+        {
             Debug.Log("Correct Answer");
-            if (gameController != null) {
-                gameController.AddScore(1);  // Use the GameController instance
-            }
-            quizmanager.correct();
-        } else {
-            Debug.Log("Incorrect Answer");
-            quizmanager.correct();
+            gameController.AddScore(1); 
+            quizmanager.correctAnswer();  // Call correctAnswer() to handle logic
         }
+        else
+        {
+            Debug.Log("Incorrect Answer");
+            quizmanager.incorrectAnswer();  // Even on incorrect, move to next question or scene
+        }
+
     }
     
 

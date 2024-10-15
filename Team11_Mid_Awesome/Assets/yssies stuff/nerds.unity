@@ -747,7 +747,7 @@ MonoBehaviour:
     - 15
     - 17
     - 10
-    correctAnswerIndex: 2
+    correctAnswerIndex: 1
   - questions: "If the football team takes a water break every 24 minutes and it
       takes 1.5 minutes to poison one player\u2019s water, how many players can you
       poison between water breaks? "

@@ -19,15 +19,36 @@ public class QuizManager : MonoBehaviour
        generateQuestion();
     }
 
-    public void correct(){
+    public void correctAnswer(){
+        score++;
+        if(score == 5){
+            SceneManager.LoadScene("ClassroomBook");
+        }
+        // Remove the answered question from the list
         QnA.RemoveAt(currentQuestionIndex);
-        if (QnA.Count == 0 || currentQuestionIndex == 6) // When all questions are done or index reaches 4
+
+        // If all questions are done but player hasn't won, load "nerds_talk"
+        if (QnA.Count == 0) // Check if no questions remain
         {
-            WinorLose();
+            SceneManager.LoadScene("nerds_talk"); // Load 'nerds_talk' scene
         }
         else
         {
-            generateQuestion();
+            generateQuestion(); // Continue to next question
+        }
+    }
+      public void incorrectAnswer(){
+        // Remove the answered question from the list
+        QnA.RemoveAt(currentQuestionIndex);
+
+        // If all questions are done but player hasn't won, load "nerds_talk"
+        if (QnA.Count == 0) // Check if no questions remain
+        {
+            SceneManager.LoadScene("nerds_talk"); // Load 'nerds_talk' scene
+        }
+        else
+        {
+            generateQuestion(); // Continue to next question
         }
     }
 
@@ -45,13 +66,6 @@ public class QuizManager : MonoBehaviour
             if(QnA[currentQuestionIndex].correctAnswerIndex == i+1){
                  options[i].GetComponent<answerScript>().isCorrect = true; 
             }
-        }
-    }
-    public void WinorLose(){
-        if (score >= scoreWin){
-            SceneManager.LoadScene("ClassroomBook");
-        } else {
-            SceneManager.LoadScene("nerds_talk");
         }
     }
     public void QuitGame() {

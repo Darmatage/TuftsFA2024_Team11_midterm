@@ -15,10 +15,9 @@ public class Score : MonoBehaviour {
         if (controllerObject != null) {
             gameController = controllerObject.GetComponent<GameController>();
         }
-        score =0;
+        score = 0;
         UpdateScore();
           
-
         if (isEnd){
                Cursor.lockState = CursorLockMode.None;
                Cursor.visible = true;
@@ -34,14 +33,15 @@ public class Score : MonoBehaviour {
     public void AddScore (int newScoreValue) {
           score += newScoreValue;
           UpdateScore ();
-           if (score >= scoreWin){
-              SceneManager.LoadScene("yssies_scene"); // uses level name
-             //SceneManager.LoadScene(1); // uses build index
-             //SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex);
-                                                               // restart same level
-            }
+          WinorLose();
      }
-
+    public void WinorLose(){
+        if (score >= scoreWin){
+            SceneManager.LoadScene("ClassroomBook");
+        } else {
+            QuitGame();
+        }
+    }
     void UpdateScore () {
         Text scoreTextB = textGameObject.GetComponent<Text>();
         scoreTextB.text = "Score: " + score;

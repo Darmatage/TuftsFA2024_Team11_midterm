@@ -21,7 +21,7 @@ public class QuizManager : MonoBehaviour
         QnA.RemoveAt(currentQuestionIndex);
         if (QnA.Count == 0 || currentQuestionIndex == 4) // When all questions are done or index reaches 4
         {
-            SceneManager.LoadScene("yssies_scene"); // Switch to your scene
+            SceneManager.LoadScene("ClassroomBook"); // Switch to your scene
         }
         else
         {

@@ -1,30 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
- 
+
 public class CardShuffler : MonoBehaviour
 {
     // Reference to all the card objects in the scene
-    public Transform[] cardSlots;  // Holds the positions where the cards will be placed
-    public GameObject[] cards;     // Holds all the card GameObjects
+    public GameObject[] cards;  // Holds all the card GameObjects
 
-    // Function to shuffle the cards
+    // Reference to the slots or positions where the cards will be placed
+    public Transform[] cardSlots;
+
+    private void Start()
+    {
+        ShuffleCards();  // Shuffle cards as soon as the game starts
+    }
+
     public void ShuffleCards()
     {
         // Create a list of indices representing the positions
-        System.Random random = new System.Random();
-        for (int i = 0; i < cards.Length; i++)
-        {
-            // Pick a random index to swap with
-            int randomIndex = random.Next(i, cards.Length);
+        List<int> availableSlots = new List<int>();
 
-            // Swap the current card with the randomly chosen card
-            Vector3 tempPosition = cards[i].transform.position;
-            cards[i].transform.position = cards[randomIndex].transform.position;
-            cards[randomIndex].transform.position = tempPosition;
+        for (int i = 0; i < cardSlots.Length; i++)
+        {
+            availableSlots.Add(i);
         }
 
-        Debug.Log("Cards shuffled!");
+        // Shuffle the cards by assigning random positions
+        foreach (GameObject card in cards)
+        {
+            // Pick a random available slot
+            int randomIndex = Random.Range(0, availableSlots.Count);
+            int slotIndex = availableSlots[randomIndex];
+
+            // Place the card at the corresponding slot position
+            card.transform.position = cardSlots[slotIndex].position;
+
+            // Remove the used slot from the list of available slots
+            availableSlots.RemoveAt(randomIndex);
+        }
+
+        Debug.Log("Cards shuffled at the start!");
     }
 }
-
